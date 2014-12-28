@@ -7,17 +7,109 @@
     <script type="text/javascript" src="../../dist/paper-full.js"></script>
     <script type="text/paperscript" canvas="canvas">
 
-var path = new Path();
-path.strokeColor = 'black';
-path.add(new Point(100, 150)); 
-path.add(new Point(115, 300)); 
-path.add(new Point(135, 400));
-path.add(new Point(450, 385));
-path.closed = true;
-path.smooth()
+
+
+ // vars
+    var point1 = [250, 500];
+    var point2 = [500, 300];
+    
+    // draw the line
+    var path = new Path();
+    path.add(new Point(point1), new Point(point2));
+    path.strokeColor = "Red";
 
 
 
+
+    var point1a = [950, 450];
+    var point2a = [500, 300];
+
+    var path2 = new Path();
+    path2.add(new Point(point1a), new Point(point2a));
+    path2.strokeColor = "Green";
+
+
+    
+    // draw the circle
+    var boat1 = new Path.Circle(0,100,4);
+    circle.strokeColor = "Black";
+
+    var boat2 = new Path.Circle(950,450,4);
+    boat2.strokeColor = "Blue"
+    
+    var buoy1 = new Path.Circle(425,205, 4)
+    buoy1.strokeColor = "Green"
+    // target to move to
+    var target = point2;
+
+    // how many frame does it take to reach a target
+    var steps = 100;
+
+    // defined vars for onFrame
+    var dX       = 0;
+    var dY       = 0;
+
+    // position circle on path
+    boat1.position.x = target[0];
+    boat1.position.y = target[1];
+
+    boat2.position.x = target[0];
+    boat2.position.y = target[1];
+
+
+    function onFrame(boat1_move) {
+        
+        //check if cricle reached its target
+        if (Math.round(boat1.position.x) == target[0] && Math.round(boat1.position.y) == target[1]) {
+            switch(target) {
+                case point1:
+                    target = point2;
+                    break;
+
+            }
+
+            // calculate the dX and dY
+            dX = (target[0] - boat1.position.x)/steps;
+            dY = (target[1] - boat1.position.y)/steps;
+
+        }
+
+        // do the movement
+        boat1.position.x += dX;
+        boat1.position.y += dY;
+    };
+
+
+    function onFrame(boat2_move) {
+        
+        //check if cricle reached its target
+        if (Math.round(boat1.position.x) == target[0] && Math.round(boat2.position.y) == target[1]) {
+            switch(target) {
+                case point1:
+                    target = point2;
+                    break;
+                case point2:
+                    target = point3;
+                    break;
+                case point3:
+                    target = point4;
+                    break;
+                case point4: 
+                    target = point1;
+                    break;
+
+            }
+
+            // calculate the dX and dY
+            dX = (target[0] - boat2.position.x)/steps;
+            dY = (target[1] - boat2.position.y)/steps;
+
+        }
+
+        // do the movement
+        boat2.position.x += dX;
+        boat2.position.y += dY;
+    };
 
 
     </script>
