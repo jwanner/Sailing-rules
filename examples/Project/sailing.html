@@ -18,38 +18,35 @@
 
  // vars
  //boat 1
+
+ function Boat1(){
     var point1 = [250, 500];
     var point2 = [500, 300];
     
-    // draw the line
-    var path = new Path();
-    path.add(new Point(point1), new Point(point2));
-    path.strokeColor = "Blue";
-
-    // draw the circle
-    var boat1 = new Path.Circle(250,500,8);
-    boat1.strokeColor = "Black";
-    
-
-    // target to move to
 
     var target = point1;
 
 
+    boat1.position.x = target[0];
+    boat1.position.y = target[1];
+
+    // draw the circle
+    var boat1 = new Path.Circle(250,500,8);
+    boat1.strokeColor = "Black";
+
+        // draw the line
+    var path = new Path();
+    path.add(new Point(point1), new Point(point2));
+    path.strokeColor = "Blue";
 
     // how many frame does it take to reach a target
     var steps = 100;
 
-    // defined vars for onFrame
+    // defined vars for onFrame 
     var dX       = 0;
     var dY       = 0;    
 
-    // position circle on path
-    boat1.position.x = target[0];
-    boat1.position.y = target[1];
-
-
-
+        
 
     function onFrame(boat1_move) {
         
@@ -72,7 +69,7 @@
         boat1.position.y += dY;
     };
 
-
+};
 
 
 
