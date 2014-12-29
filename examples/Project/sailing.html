@@ -19,16 +19,16 @@
  // vars
  //boat 1
 
- function Boat1(){
     var point1 = [250, 500];
     var point2 = [500, 300];
     
 
+function target(){
     var target = point1;
+};
 
-
-    boat1.position.x = target[0];
-    boat1.position.y = target[1];
+    boat1.position.x = target()[0];
+    boat1.position.y = target()[1];
 
     // draw the circle
     var boat1 = new Path.Circle(250,500,8);
@@ -48,19 +48,21 @@
 
         
 
+
+
     function onFrame(boat1_move) {
         
         //check if cricle reached its target
-        if (Math.round(boat1.position.x) == target[0] && Math.round(boat1.position.y) == target[1]) {
-            switch(target) {
+        if (Math.round(boat1.position.x) == target()[0] && Math.round(boat1.position.y) == target()[1]) {
+            switch(target()) {
                 case point1:
-                    target = point2;
+                    target() = point2;
                     break;
             }
 
             // calculate the dX and dY
-            dX = (target[0] - boat1.position.x)/steps;
-            dY = (target[1] - boat1.position.y)/steps;
+            dX = (target()[0] - boat1.position.x)/steps;
+            dY = (target()[1] - boat1.position.y)/steps;
  
         }
 
@@ -69,7 +71,6 @@
         boat1.position.y += dY;
     };
 
-};
 
 
 
@@ -89,10 +90,9 @@ var path2 = new Path();
     var boat2 = new Path.Circle(950,300,10);
     boat2.strokeColor = "Pink"
 
-
-  
-
-
+function target1(){
+    var target = point1a;
+};
 
     // how many frame does it take to reach a target
     var steps = 100;
