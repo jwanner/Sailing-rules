@@ -27,7 +27,7 @@
     path.strokeColor = "Blue";
 
     // draw the circle
-    var boat1 = new Path.Circle(950,850,8);
+    var boat1 = new Path.Circle(250,500,8);
     boat1.strokeColor = "Black";
     
 
@@ -89,11 +89,11 @@ var path2 = new Path();
     path2.add(new Point(point1a), new Point(point2a));
     path2.strokeColor = "Orange";
 
-    var boat2 = new Path.Circle(950,450,10);
+    var boat2 = new Path.Circle(950,300,10);
     boat2.strokeColor = "Pink"
 
 
-  var target = point1a;
+  
 
 
 
@@ -110,7 +110,7 @@ var path2 = new Path();
 
 
 
-    function onFrame1(boat2_move) {
+    function onFrame(boat2_move) {
         
         //check if cricle reached its target
         if (Math.round(boat1.position.x) == target[0] && Math.round(boat2.position.y) == target[1]) {
